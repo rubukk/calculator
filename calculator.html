@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="kutuphane/basic.css">
+    <script src="kutuphane/basic.js" type="text/javascript" charset="utf-8"></script>
+    
+    <title>Calculator</title>
+
+    <script>
+        //textboxs
+        var number1
+        var number2
+        var result
+    
+        //buuttons
+        var add
+        var sub
+        var mul
+        var div
+    
+        // First executed function.
+        var start = function() {
+    
+            page.color = "#111111";
+    
+            // Get the textboxs and buttons
+            number1=createTextBox()
+            number1.text = ""
+            number1.title = "Number 1:"
+            number1.left = 20
+            number1.top = 50
+    
+            number2=createTextBox()
+            number2.text = ""
+            number2.title = "Number 2:"
+            number2.left = 20
+            number2.top = number1.top + number1.height + 40
+    
+            //add
+            add = createButton("+")
+            add.text = "+"
+            add.left = number1.left
+            add.top = number2.top + number2.height + 10
+            add.onClick(adding)
+    
+            //sub
+            sub = createButton("-")
+            sub.text = "-"
+            sub.left = add.left + add.width + 10
+            sub.top = add.top
+            sub.onClick(subtracting)
+    
+            //mul
+            mul = createButton("*")
+            mul.text = "*"
+            mul.left = number1.left
+            mul.top = sub.top + sub.height + 10
+            mul.onClick(multiplying)
+    
+            //div
+            div = createButton("/")
+            div.text = "/"
+            div.left = sub.left
+            div.top = mul.top
+            div.onClick(dividing)
+    
+            //result
+            result = createTextBox()
+            result.title = "Result:"
+            result.left = number1.left
+            result.top = mul.top + mul.height + 40
+        }
+        
+        // function for adding
+        var adding = function(){
+            result.text = num(number1.text) + num(number2.text)
+    
+        }
+    
+        // function for subtracting
+        var subtracting = function(){
+            result.text = num(number1.text) - num(number2.text)
+        }
+    
+        // function for multiplying
+        var multiplying = function(){
+            result.text = num(number1.text) * num(number2.text)
+        }
+    
+        // function for dividing
+        var dividing = function(){
+            if(num(number2.text) == 0){
+                alert("Cannot be divided by 0!")
+                return
+            }
+            result.text = num(number1.text) / num(number2.text)
+        }    
+    
+        </script>
+</head>
+<body>
+</body>
+</html>
